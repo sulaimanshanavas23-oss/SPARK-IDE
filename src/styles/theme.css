@@ -177,45 +177,14 @@
   .transition-standard { transition-duration: 200ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   .transition-layout { transition-duration: 280ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   .transition-entrance { transition-duration: 600ms; transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-}
 
-/* Base styles without @apply for root elements */
-html, body, #root {
-  height: 100%;
-  background-color: #111111;
-  color: #FFFFFF;
-  font-family: "Inter", system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  border-color: #2E2E2E;
-}
-
-::selection {
-  background-color: rgba(255, 193, 7, 0.2);
-  color: #FFFFFF;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #0B0B0B;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #222222;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #2E2E2E;
-}
-
-::-webkit-scrollbar-corner {
-  background-color: #0B0B0B;
+  /* Projects page UI */
+  .template-grid { display: grid; gap: 16px; }
+  .template-card { border-radius: 8px; padding: 16px; border: 1px solid rgba(46,46,46,0.5); background-color: rgba(26,26,26,0.8); }
+  .blank-card { border: 2px dashed rgba(46,46,46,0.5); border-radius: 8px; padding: 16px; background-color: rgba(26,26,26,0.8); }
+  .link-btn { color: #FFC107; text-decoration: none; font-weight: 500; }
+  .link-btn:hover { color: #FFD54F; }
+  .row-actions { display: flex; gap: 8px; }
+  .panel { border-radius: 8px; border: 1px solid rgba(46,46,46,0.5); background-color: rgba(26,26,26,0.9); }
+  .dim { color: rgba(255,255,255,0.5); font-size: 12px; }
 }
