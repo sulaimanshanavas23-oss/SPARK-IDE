@@ -8,9 +8,9 @@ export function Breadcrumbs() {
   if (!project) return null
 
   return (
-    <nav className="h-[32px] bg-ink-panel border-b border-ink-line px-3 flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
+    <nav className="h-[32px] bg-nsGray-light border-b border-border px-3 flex items-center gap-1.5 text-sm text-nsGray-medium" aria-label="Breadcrumb">
       <motion.button
-        className="flex items-center gap-1 px-2 py-1 rounded text-nsGray-medium hover:text-nsWhite hover:bg-ink-raised transition-micro"
+        className="flex items-center gap-1 px-2 py-1 rounded bg-nsGray-medium/50 hover:text-nsWhite hover:bg-nsGray-light transition-colors"
         onClick={() => studio.navigate('dashboard')}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
@@ -18,10 +18,10 @@ export function Breadcrumbs() {
         <span aria-hidden>🏠</span>
       </motion.button>
 
-      <span className="text-ink-line mx-1">/</span>
+      <span className="text-nsGray-medium mx-1">/</span>
 
       <motion.button
-        className="flex items-center gap-1 px-2 py-1 rounded text-nsGray-medium hover:text-nsWhite hover:bg-ink-raised transition-micro"
+        className="flex items-center gap-1 px-2 py-1 rounded bg-nsGray-medium/50 hover:text-nsWhite hover:bg-nsGray-light transition-colors"
         onClick={() => studio.navigate('projects')}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
@@ -29,7 +29,7 @@ export function Breadcrumbs() {
         <span aria-hidden>📁</span> Projects
       </motion.button>
 
-      <span className="text-ink-line mx-1">/</span>
+      <span className="text-nsGray-medium mx-1">/</span>
 
       <motion.span
         className="flex items-center gap-1 px-2 py-1 text-nsWhite font-medium truncate max-w-[200px]"
@@ -43,11 +43,7 @@ export function Breadcrumbs() {
 
       <div className="flex items-center gap-2">
         <motion.span
-          className={`px-2 py-0.5 rounded text-xs font-mono ${
-            project.code.syncedFromBlocks
-              ? 'bg-ok/15 text-ok border border-ok/20'
-              : 'bg-warn/15 text-warn border border-warn/20'
-          }`}
+          className="px-2 py-0.5 rounded text-xs font-mono bg-nsGray-light/15 text-nsGray-medium border border-nsGray-medium/20"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
         >
@@ -55,7 +51,7 @@ export function Breadcrumbs() {
         </motion.span>
 
         <motion.button
-          className="px-3 py-1.5 rounded-lg bg-spark text-ink-deep font-semibold text-sm hover:bg-spark-dark shadow-glow transition-micro flex items-center gap-1.5"
+          className="px-3 py-1.5 rounded-lg bg-nsYellow text-nsBlack font-semibold text-sm hover:bg-nsYellow-dark shadow-colors transition-200 flex items-center gap-1.5"
           onClick={() => studio.openWorkspace(project.id, 'simulate')}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

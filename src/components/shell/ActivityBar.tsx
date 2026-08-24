@@ -18,7 +18,7 @@ export function ActivityBar() {
 
   return (
     <aside
-      className={`fixed top-[48px] left-0 bottom-[28px] z-40 w-14 bg-ink-deep border-r border-ink-line flex flex-col items-center transition-layout`}
+      className={`fixed top-[48px] left-0 bottom-[28px] z-40 w-14 bg-nsBlack border-r border-border flex flex-col items-center transition-280`}
       role="navigation"
       aria-label="Workspace tabs"
     >
@@ -27,12 +27,12 @@ export function ActivityBar() {
           {WORKSPACE_TABS.map((tab) => (
             <motion.button
               key={tab.id}
-              className={`relative w-10 h-10 rounded-lg flex flex-col items-center justify-center gap-0.5 transition-micro ${
+              className={`relative w-10 h-10 rounded-lg flex flex-col items-center justify-center gap-0.5 transition-colors ${
                 inWorkspace && studio.view.tab === tab.id
-                  ? 'bg-ink-raised text-spark'
+                  ? 'bg-nsGray-light text-nsBlack'
                   : inWorkspace
-                    ? 'text-nsGray-medium hover:text-nsWhite hover:bg-ink-raised'
-                    : 'text-ink-line/50 hover:text-nsGray-medium'
+                    ? 'text-nsGray-medium hover:text-nsWhite hover:bg-nsGray-light'
+                    : 'text-nsGray-medium/50 hover:text-nsGray-medium'}
               }`}
               disabled={!inWorkspace}
               onClick={() => inWorkspace && studio.setTab(tab.id)}
@@ -44,11 +44,11 @@ export function ActivityBar() {
               transition={{ duration: 150, delay: 0.03 }}
               title={inWorkspace ? `${tab.label} (${tab.shortcut})` : `Open a project to use ${tab.label}`}
             >
-              <span className="text-xl" aria-hidden={true}>{tab.icon}</span>
+              <span className="text-xl text-nsYellow" aria-hidden={true}>{tab.icon}</span>
               <span className="text-[10px] font-mono text-nsGray-medium">{tab.shortcut}</span>
               {inWorkspace && studio.view.tab === tab.id && (
                 <motion.div
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-spark shadow-glow"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-nsYellow shadow-glow"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
@@ -59,9 +59,9 @@ export function ActivityBar() {
         </AnimatePresence>
       </div>
 
-      <div className="w-full px-2 pb-2 border-t border-ink-line">
+      <div className="w-full px-2 pb-2 border-t border-border">
         <motion.button
-          className="w-full h-9 rounded-lg flex items-center justify-center gap-2 text-sm font-medium text-nsGray-medium hover:text-nsWhite hover:bg-ink-raised transition-micro"
+          className="w-full h-9 rounded-lg flex items-center justify-center gap-2 text-sm font-medium text-nsGray-medium hover:text-nsWhite hover:bg-nsGray-light transition-200"
           disabled={!inWorkspace}
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.98 }}

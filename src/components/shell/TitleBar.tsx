@@ -11,20 +11,20 @@ export function TitleBar() {
   const studio = useStudio()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-[48px] bg-ink-deep border-b border-ink-line flex items-center gap-4 px-4">
+    <header className="fixed top-0 left-0 right-0 z-50 h-[48px] bg-nsBlack border-b border-border flex items-center gap-4 px-4">
       <motion.button
-        className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-ink-raised transition-micro"
+        className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-nsGray-light transition-200"
         onClick={() => studio.navigate('dashboard')}
         whileTap={{ scale: 0.98 }}
         title="Nano Spark IDE"
       >
-        <span className="w-8 h-8 rounded-full bg-gradient-radial from-spark-light via-spark to-spark-dark flex items-center justify-center shadow-glow">
-          <span className="text-ink-deep font-display font-bold text-xl">⚡</span>
+        <span className="w-8 h-8 rounded-full bg-nsGray-medium flex items-center justify-center">
+          <span className="text-nsBlack font-bold text-xl">⚡</span>
         </span>
-        <span className="font-display font-bold text-h1 tracking-wide">
-          Nano <span className="text-spark">Spark</span>
+        <span className="font-heading font-bold text-2xl tracking-wide text-nsWhite">
+          Nano <span className="text-nsYellow">Spark</span>
         </span>
-        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-spark/20 text-spark border border-spark/30">
+        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-nsYellow/20 text-nsYellow border border-nsYellow/30">
           IDE
         </span>
       </motion.button>
@@ -33,10 +33,10 @@ export function TitleBar() {
         {NAV_ITEMS.map((item) => (
           <motion.button
             key={item.id}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-micro ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               studio.view.page === item.id
-                ? 'bg-ink-raised text-spark'
-                : 'text-nsGray-medium hover:text-nsWhite hover:bg-ink-raised'
+                ? 'bg-nsGray-light text-nsBlack'
+                : 'text-nsGray-medium hover:text-nsWhite hover:bg-nsGray-light'}
             }`}
             onClick={() => studio.navigate(item.id)}
             whileHover={{ scale: 1.02 }}
@@ -54,10 +54,10 @@ export function TitleBar() {
         <motion.div
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono ${
             studio.saveState === 'saved'
-              ? 'bg-ok/15 text-ok border border-ok/20'
+              ? 'bg-nsGray-light/15 text-nsGray-medium border border-nsGray-medium/20'
               : studio.saveState === 'saving'
-                ? 'bg-warn/15 text-warn border border-warn/20 animate-pulse'
-                : 'bg-warn/15 text-warn border border-warn/20'
+                ? 'bg-nsYellow/15 text-nsYellow border border-nsYellow/20 animate-pulse'
+                : 'bg-nsYellow/15 text-nsYellow border border-nsYellow/20'}
           }`}
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}

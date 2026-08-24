@@ -9,7 +9,7 @@ export function Sidebar() {
 
   return (
     <motion.aside
-      className={`fixed top-[48px] left-[56px] bottom-[28px] z-30 bg-ink-panel border-r border-ink-line flex flex-col transition-layout overflow-hidden`}
+      className={`fixed top-[48px] left-[56px] bottom-[28px] z-30 bg-nsBlack border-r border-border flex flex-col transition-280 overflow-hidden`}
       style={{ width: isWorkspace ? '256px' : '0' }}
       initial={false}
       animate={{ width: isWorkspace ? 256 : 0 }}
@@ -52,19 +52,19 @@ function DashboardSidebar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <span className="text-4xl mb-2">📁</span>
+          <span className="text-2xl mb-2">📁</span>
           <p className="font-medium">No projects yet</p>
-          <p className="text-sm mt-1">Click "Start a project" to begin</p>
+          <p className="text-sm mt-1">Click "Browse projects" to begin</p>
         </motion.div>
       ) : (
         <ul className="flex-1 overflow-y-auto space-y-1" role="list">
           {recent.map((p) => (
             <motion.li key={p.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.02 }}>
               <button
-                className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm hover:bg-ink-raised transition-micro"
+                className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm hover:bg-nsGray-light transition-colors"
                 onClick={() => studio.openWorkspace(p.id)}
               >
-                <span className="w-8 h-8 rounded-lg bg-spark/10 flex items-center justify-center text-spark text-lg" aria-hidden>
+                <span className="w-8 h-8 rounded-lg flex items-center justify-center" aria-hidden>
                   💡
                 </span>
                 <div className="flex-1 min-w-0 text-left">
@@ -79,7 +79,7 @@ function DashboardSidebar() {
         </ul>
       )}
       <motion.button
-        className="w-full mt-3 px-3 py-2 rounded-lg bg-spark/15 text-spark font-medium text-sm hover:bg-spark/25 transition-micro flex items-center justify-center gap-2"
+        className="w-full mt-3 px-3 py-2 rounded-lg bg-nsGray-light text-nsBlack font-medium text-sm hover:bg-nsYellow transition-colors flex items-center justify-center gap-2"
         onClick={() => studio.navigate('projects')}
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
@@ -104,10 +104,10 @@ function ProjectsSidebar() {
         ].map((t) => (
           <motion.li key={t.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 200 }}>
             <button
-              className="w-full p-3 rounded-xl bg-ink-raised border border-ink-line hover:border-spark/30 hover:bg-ink-panel transition-micro text-left flex items-start gap-3"
+              className="w-full p-3 rounded-xl bg-nsGray-light border border-border hover:border-nsYellow hover:bg-nsYellow/10 transition-colors text-left flex items-start gap-3"
               onClick={() => studio.createFromTemplate(t.id, 'guided')}
             >
-              <span className="w-10 h-10 rounded-lg bg-spark/15 flex items-center justify-center text-xl" aria-hidden>{t.emoji}</span>
+              <span className="w-10 h-10 rounded-lg flex items-center justify-center" aria-hidden>{t.emoji}</span>
               <div className="flex-1 min-w-0">
                 <p className="font-medium truncate">{t.title}</p>
                 <p className="text-xs text-nsGray-medium truncate">{t.desc}</p>
@@ -128,9 +128,11 @@ function WorkspaceSidebar({ project }: { project: NonNullable<ReturnType<typeof 
       <div className="px-2 py-2 text-xs font-semibold uppercase tracking-wider text-nsGray-medium">
         Project
       </div>
-      <motion.div className="mb-3 p-3 rounded-xl bg-ink-raised border border-ink-line" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+      <motion.div className="mb-3 p-3 rounded-xl bg-nsGray-light border border-border" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-8 rounded-lg bg-spark/15 flex items-center justify-center text-spark text-lg" aria-hidden>💡</span>
+          <span className="w-8 h-8 rounded-lg flex items-center justify-center" aria-hidden>
+            <span className="text-nsYellow">💡</span>
+          </span>
           <div className="flex-1 min-w-0">
             <input
               type="text"
@@ -143,9 +145,9 @@ function WorkspaceSidebar({ project }: { project: NonNullable<ReturnType<typeof 
           </div>
         </div>
         <div className="flex gap-2">
-          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-spark/15 text-spark hover:bg-spark/25 transition-micro" onClick={() => studio.resetToTemplateStart(project.id)}>⟲ Reset</button>
-          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-ink-editor text-nsGray-medium hover:text-nsWhite hover:bg-ink-line transition-micro" onClick={() => studio.duplicateProject(project.id)}>⧉ Duplicate</button>
-          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-err/15 text-err hover:bg-err/25 transition-micro" onClick={() => studio.deleteProject(project.id)}>🗑 Delete</button>
+          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-nsYellow/10 text-nsYellow hover:bg-nsYellow/25 transition-colors" onClick={() => studio.resetToTemplateStart(project.id)}>⟲ Reset</button>
+          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-nsBlack/10 text-nsGray-medium hover:text-nsWhite hover:bg-nsBlack/25 transition-micro" onClick={() => studio.duplicateProject(project.id)}>⧉ Duplicate</button>
+          <button className="flex-1 text-xs px-2 py-1.5 rounded-lg bg-nsRed/15 text-nsRed hover:bg-nsRed/25 transition-micro" onClick={() => studio.deleteProject(project.id)}>🗑 Delete</button>
         </div>
       </motion.div>
 
@@ -155,8 +157,8 @@ function WorkspaceSidebar({ project }: { project: NonNullable<ReturnType<typeof 
       <ul className="flex-1 overflow-y-auto space-y-1">
         {project.circuit.components.map((comp: PlacedComponent) => (
           <motion.li key={comp.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.01 }}>
-            <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-ink-raised transition-micro text-sm">
-              <span className="w-6 h-6 rounded flex items-center justify-center text-xs" style={{ background: `${getComponentColor(comp)}20`, color: getComponentColor(comp) }} aria-hidden>
+            <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-nsGray-light transition-colors text-sm">
+              <span className="w-6 h-6 rounded flex items-center justify-center text-xs" style={{ background: 'rgba(255,193,7,0.1)', color: '#FFC107' }} aria-hidden>
                 {getComponentIcon(comp)}
               </span>
               <span className="truncate font-medium">{comp.label}</span>
@@ -167,19 +169,6 @@ function WorkspaceSidebar({ project }: { project: NonNullable<ReturnType<typeof 
       </ul>
     </div>
   )
-}
-
-function getComponentColor(comp: { defId: string }) {
-  const colors: Record<string, string> = {
-    'board-uno': '#00979d',
-    ldr: '#FFD166',
-    led: '#FF8A3D',
-    resistor: '#D7DDE8',
-    'potentiometer': '#C9A0FF',
-    button: '#9AA7FF',
-    buzzer: '#6BD6A8',
-  }
-  return colors[comp.defId] || '#888'
 }
 
 function getComponentIcon(comp: { defId: string }) {

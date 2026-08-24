@@ -1,12 +1,3 @@
-@import "@fontsource/baloo-2/600.css";
-@import "@fontsource/baloo-2/700.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/jetbrains-mono/400.css";
-@import "@fontsource/jetbrains-mono/500.css";
-@import "@fontsource/jetbrains-mono/700.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,15 +9,15 @@
 
   html, body, #root {
     height: 100%;
-    @apply bg-ink-DEFAULT text-nsWhite font-body antialiased;
+    @apply bg-nsWhite text-nsBlack font-body antialiased;
   }
 
   * {
-    @apply border-ink-line;
+    @apply border-border;
   }
 
   ::selection {
-    @apply bg-spark/20 text-nsWhite;
+    @apply bg-nsYellow/20 text-nsWhite;
   }
 
   ::-webkit-scrollbar {
@@ -35,156 +26,71 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-ink-deep;
+    @apply bg-nsGray-light;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-ink-raised rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-ink-line;
+    @apply bg-nsBlack rounded-full hover:bg-nsYellow;
   }
 
   ::-webkit-scrollbar-corner {
-    @apply bg-ink-deep;
+    @apply bg-nsBlack;
   }
 }
 
 @layer utilities {
-  /* Category colors for Design tab parts */
-  .cat-board { color: #00979d; }
-  .cat-sensor { color: #ffd166; }
-  .cat-input { color: #c9a0ff; }
-  .cat-output { color: #ff8a3d; }
-  .cat-passive { color: #d7dde8; }
-  .cat-power { color: #ff5f56; }
-  .cat-structure { color: #f2ead8; }
-
-  /* Node base styles */
-  .cnode {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px;
-    border-radius: 6px;
-    background-color: rgba(17,17,17,0.5);
-    backdrop-filter: blur(4px);
-  }
-
-  .part-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 6px;
-    border-radius: 6px;
-    background-color: rgba(26,26,26,0.8);
-    border: 1px solid rgba(46,46,46,0.5);
-  }
-
-  /* Inspector panel base */
-  .inspector-panel {
-    background-color: rgba(26,26,26,0.9);
-    border: 1px solid rgba(46,46,46,0.5);
-    border-radius: 8px;
-    padding: 16px;
-  }
-
-  /* Spark colors */
-  .bg-spark { background-color: #FFC107; }
-  .bg-spark-dark { background-color: #F7B500; }
-  .bg-spark-light { background-color: #FFD54F; }
-  .text-spark { color: #FFC107; }
-  .text-spark-dark { color: #F7B500; }
-  .text-spark-light { color: #FFD54F; }
-  .border-spark { border-color: #FFC107; }
-  .border-spark-dark { border-color: #F7B500; }
-  .border-spark-light { border-color: #FFD54F; }
-  .ring-spark { --tw-ring-color: #FFC107; }
-  .ring-spark-dark { --tw-ring-color: #F7B500; }
-  .ring-spark-light { --tw-ring-color: #FFD54F; }
-
-  /* Ink colors */
-  .bg-ink-DEFAULT { background-color: #111111; }
-  .bg-ink-deep { background-color: #0B0B0B; }
-  .bg-ink-panel { background-color: #161616; }
-  .bg-ink-editor { background-color: #1A1A1A; }
-  .bg-ink-raised { background-color: #222222; }
-  .text-ink-DEFAULT { color: #111111; }
-  .text-ink-deep { color: #0B0B0B; }
-  .text-ink-panel { color: #161616; }
-  .text-ink-editor { color: #1A1A1A; }
-  .text-ink-raised { color: #222222; }
-  .border-ink-line { border-color: #2E2E2E; }
-  .border-ink-DEFAULT { border-color: #111111; }
-
-  /* nsWhite / nsGray */
+  /* Colors */
+  .bg-nsYellow { background-color: #FFC107; }
+  .bg-nsYellow-dark { background-color: #F7B500; }
+  .bg-nsYellow-light { background-color: #FFD54F; }
+  .bg-nsBlack { background-color: #111111; }
   .bg-nsWhite { background-color: #FFFFFF; }
-  .text-nsWhite { color: #FFFFFF; }
-  .text-nsGray-medium { color: #9CA3AF; }
-  .text-nsGray-light { color: #F7F7F5; }
   .bg-nsGray-light { background-color: #F7F7F5; }
-  .border-nsGray-medium { border-color: #9CA3AF; }
+  .bg-nsGray-medium { background-color: #9CA3AF; }
+  .text-nsBlack { color: #111111; }
+  .text-nsWhite { color: #FFFFFF; }
+  .text-nsGray-light { color: #F7F7F5; }
+  .text-nsGray-medium { color: #9CA3AF; }
+  .border-border { border-color: #E5E7EB; }
 
-  /* Semantic colors */
-  .bg-ok { background-color: #22C55E; }
-  .text-ok { color: #22C55E; }
-  .border-ok { border-color: #22C55E; }
-  .bg-warn { background-color: #FFC107; }
-  .text-warn { color: #FFC107; }
-  .border-warn { border-color: #FFC107; }
-  .bg-err { background-color: #EF4444; }
-  .text-err { color: #EF4444; }
-  .border-err { border-color: #EF4444; }
-  .bg-info { background-color: #38BDF8; }
-  .text-info { color: #38BDF8; }
-  .border-info { border-color: #38BDF8; }
+  /* Gold gradient */
+  .bg-gold-gradient { background: linear-gradient(135deg, #F7B500 0%, #FFD54F 100%); }
+  .bg-gradient-primary { background: linear-gradient(135deg, #F7B500 0%, #FFD54F 100%); }
 
-  /* Font families */
-  .font-display { font-family: "Baloo 2", system-ui, sans-serif; }
-  .font-body { font-family: "Inter", system-ui, sans-serif; }
-  .font-mono { font-family: "JetBrains Mono", "Fira Code", Consolas, monospace; }
+  /* Buttons */
+  .btn-primary {
+    @apply rounded-xl px-6 py-3 font-heading font-bold text-nsBlack shadow-soft hover:bg-nsBlack hover:text-nsYellow transition-colors;
+  }
+  .btn-primary-dark {
+    @apply rounded-xl px-6 py-3 font-heading font-bold text-nsWhite shadow-soft hover:bg-nsYellow hover:text-nsBlack transition-colors;
+  }
+  .btn-outline {
+    @apply rounded-xl px-6 py-3 font-heading font-bold border-2 border-nsBlack text-nsBlack shadow-soft hover:bg-nsBlack hover:text-nsYellow transition-colors;
+  }
 
-  /* Font sizes */
-  .text-display { font-size: 24px; line-height: 32px; font-weight: 700; }
-  .text-h1 { font-size: 20px; line-height: 28px; font-weight: 700; }
-  .text-h2 { font-size: 16px; line-height: 24px; font-weight: 600; }
-  .text-body { font-size: 14px; line-height: 20px; font-weight: 400; }
-  .text-small { font-size: 12px; line-height: 16px; font-weight: 400; }
-  .text-code { font-size: 13px; line-height: 20px; font-weight: 400; }
+  /* Cards */
+  .card {
+    @apply rounded-xl bg-nsWhite shadow-soft transition-colors hover:shadow-lift hover:-translate-y-1;
+  }
 
-  /* Spacing */
-  .h-title-bar { height: 48px; }
-  .h-activity-bar { height: 56px; }
-  .w-sidebar { width: 256px; }
-  .h-tab-strip { height: 40px; }
-  .h-breadcrumbs { height: 32px; }
-  .h-bottom-panel { height: 240px; }
-  .h-status-bar { height: 28px; }
+  /* Section headings */
+  .-section-kicker {
+    @apply text-nsYellow text-xs uppercase tracking-widest mb-2 block;
+  }
+  .section-title {
+    @apply text-4xl sm:text-5xl font-bold font-heading text-nsBlack;
+  }
+  .section-underline {
+    @apply h-1.5 w-16 rounded-full bg-gold-gradient my-4;
+  }
 
-  /* Border radius */
-  .rounded-input { border-radius: 0.5rem; }
-  .rounded-card { border-radius: 0.75rem; }
-  .rounded-modal { border-radius: 1rem; }
+  /* Scrollbar */
+  .scrollbar-thumb-black {
+    @apply bg-nsBlack rounded-full hover:bg-nsYellow;
+  }
 
-  /* Shadows */
-  .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2); }
-  .shadow-lift { box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3); }
-  .shadow-glow { box-shadow: 0 0 0 2px rgba(255,193,7,0.3), 0 4px 16px rgba(255,193,7,0.15); }
-
-  /* Transitions */
-  .transition-micro { transition-duration: 120ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  .transition-standard { transition-duration: 200ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  .transition-layout { transition-duration: 280ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  .transition-entrance { transition-duration: 600ms; transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-
-  /* Projects page UI */
-  .template-grid { display: grid; gap: 16px; }
-  .template-card { border-radius: 8px; padding: 16px; border: 1px solid rgba(46,46,46,0.5); background-color: rgba(26,26,26,0.8); }
-  .blank-card { border: 2px dashed rgba(46,46,46,0.5); border-radius: 8px; padding: 16px; background-color: rgba(26,26,26,0.8); }
-  .link-btn { color: #FFC107; text-decoration: none; font-weight: 500; }
-  .link-btn:hover { color: #FFD54F; }
-  .row-actions { display: flex; gap: 8px; }
-  .panel { border-radius: 8px; border: 1px solid rgba(46,46,46,0.5); background-color: rgba(26,26,26,0.9); }
-  .dim { color: rgba(255,255,255,0.5); font-size: 12px; }
+  /* Focus rings */
+  .focus-ring:focus {
+    @apply outline-none ring-2 ring-nsYellow ring-offset-2;
+  }
 }
